@@ -1,37 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from authentication.models import User
 # Create your models here.
 
-
-class UserProfile(models.Model):
-    USER_TYPE_CHOICES = (
-        ('CUSTOMER', 'Customer'),
-        ('RESTAURANT_OWNER', 'Restaurant Owner'),
-        ('RESTAURANT_STAFF', 'Restaurant Staff'),
-        ('DELIVERY_AGENT', 'Delivery Agent'),
-    )
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15)
-    user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
-
-    def __str__(self):
-        return self.user.username
-
-
-class DeliveryAddress(models.Model):
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=100)
-    is_default = models.BooleanField(default=False)
 
 
 class Restaurant(models.Model):
     restaurant_name = models.CharField(max_length=100, unique=True)
     restaurant_address = models.CharField(max_length=100)
     owner = models.OneToOneField(
-        UserProfile,
+        User,
         on_delete=models.CASCADE,
         limit_choices_to={'user_type': 'RESTAURANT_OWNER'}
     )
@@ -55,7 +32,7 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through='CartItem')
 
 
@@ -66,6 +43,7 @@ class CartItem(models.Model):
 
 
 class Order(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(CartItem)
+    address = models.CharField(max_length=1000)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)

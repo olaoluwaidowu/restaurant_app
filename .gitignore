@@ -1,0 +1,96 @@
+env/
+env
+db.sqlite3
+*db.sqlite3
+*.sqlite3
+./env
+../env
+media/
+media
+./media
+../media
+__pycache__
+../__pycache__
+./__pycache__
+__pycache__*
+*__pycache__
+*../migrations/__pycache__
+*.cpython-310
+                                                                                                         
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Distribution / packaging
+.Python
+venv/
+env/
+.env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+db.sqlite3t
+Pipfile
+
+# Files
+__pycache__
+*__pycache__   
+*.pyc
+
+
+
+
+# Setting up Redis
+sudo apt update
+
+sudo apt install redis-server
+
+sudo nano /etc/redis/redis.conf
+
+#Next, find the line specifying the supervised directive. By default, this line is set to no. However, to manage Redis as a service, set the supervised directive to systemd (Ubuntu’s init system).
+
+# Save the changes and close the file.
+
+#Finally, restart the Redis service by running:
+
+sudo systemctl restart redis.service
+
+#Verify Redis Installation
+sudo systemctl status redis
+
+#Check Redis Connection
+redis-cli
+
+ping
+#The output should respond with:
+PONG
+
+.env
+*.env
+.env*
+
+# Install ClamaV
