@@ -42,8 +42,8 @@ def update_restaurant(request):
             form = RestaurantUpdateForm(request.POST, instance=restaurant)
             if form.is_valid():
                 form.save()
-                # Redirect to a success page or the restaurant owner's dashboard.
-                return redirect('authentication:profile_page')  # Replace with your URL pattern name for the dashboard.
+
+                return redirect('authentication:profile_page')
 
         else:
             form = RestaurantUpdateForm(instance=restaurant)

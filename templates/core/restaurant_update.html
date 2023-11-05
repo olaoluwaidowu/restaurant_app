@@ -1,7 +1,7 @@
 {% extends "authentication/profile_restaurant_owner.html" %}
 {% block content %}
     <div class="container mx-auto mt-8">
-        <h1 class="text-2xl font-semibold mb-4">Update Profile Information</h1>
+        <h1 class="text-2xl font-semibold mb-4">Update Restaurant Information</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

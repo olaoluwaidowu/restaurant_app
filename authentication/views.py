@@ -115,10 +115,10 @@ def custom_login(request):
 
 def profile(request):
     if request.user.is_customer:
-        # Render the customer profile template
+
         return render(request, 'profile_customer.html', {'user': request.user})
     elif request.user.is_rider:
-        # Render the rider profile template
+
         return render(request, 'profile_rider.html', {'user': request.user})
     elif request.user.is_restaurant_owner:
             restaurant = Restaurant.objects.get(owner=request.user)
@@ -132,10 +132,8 @@ def profile(request):
                 context = {
                     'user': request.user,
                 }
-            # Render the profile template for restaurant owners
             return render(request, 'authentication/profile_restaurant_owner.html', context)
     else:
-        # Handle other user types or scenarios
         return redirect('Login')
 
 

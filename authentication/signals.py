@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from authentication.models import User  # Adjust the import path as needed
-from core.models import Restaurant  # Adjust the import path as needed
+from authentication.models import User
+from core.models import Restaurant
 
 @receiver(post_save, sender=User)
 def create_restaurant_for_owner(sender, instance, created, **kwargs):

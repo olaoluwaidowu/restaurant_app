@@ -12,5 +12,4 @@ urlpatterns = [
     path('profile/', profile, name='profile_page'),
     path('confirm/', confirm_email_view, name='ConfirmEmail'),
     path('login/', custom_login, name='Login'),
-    #path('login/', CustomLoginView.as_view(template_name='authentication/login.html'), name='login'),
 ]
