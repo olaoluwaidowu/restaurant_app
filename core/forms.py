@@ -1,6 +1,6 @@
 from django import forms
 from authentication.models import User
-from .models import Restaurant
+from .models import Restaurant, Product
 
 
 class UserProfileUpdateForm(forms.ModelForm):
@@ -13,4 +13,7 @@ class RestaurantUpdateForm(forms.ModelForm):
         model = Restaurant
         fields = ['restaurant_name', 'restaurant_address']
 
-
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'description', 'price', 'image']

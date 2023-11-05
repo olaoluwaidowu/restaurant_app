@@ -104,7 +104,7 @@ def custom_login(request):
             login(request, user)
             print('user logged in')
 
-            return redirect('authentication:profile_page')  
+            return redirect('core:owner-home')  
         else:
             print('form is invalid')
     else:

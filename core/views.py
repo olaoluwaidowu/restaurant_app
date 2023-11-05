@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import RestaurantUpdateForm, UserProfileUpdateForm
+from .forms import RestaurantUpdateForm, UserProfileUpdateForm, ProductForm
 from authentication.models import User
-from .models import Restaurant
+from .models import Restaurant, Product
 
 
 # Create your views here.
@@ -10,12 +10,16 @@ def homePage(request):
     print('home now')
     return render(request, 'core/landingPage.html')
 
-
+@login_required(login_url='Login')
 def Menu(request):
-    return render(request, 'core/menu.html')
+    
+    food_items = Product.objects.all()
+    context = {
+        'food_items': food_items,
+    }
+    return render(request, 'core/menu.html', context)
 
-
-@login_required
+@login_required(login_url='authentication:Login')
 def update_profile(request):
     user = request.user
 
@@ -32,7 +36,7 @@ def update_profile(request):
     return render(request, 'core/update_profile.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='authentication:Login')
 def update_restaurant(request):
     user = request.user
     if user.is_restaurant_owner:
@@ -49,3 +53,36 @@ def update_restaurant(request):
             form = RestaurantUpdateForm(instance=restaurant)
 
         return render(request, 'core/restaurant_update.html', {'form': form})
+    
+@login_required(login_url='authentication:Login')
+def add_menu(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            product = form.save(commit=False)
+            product.restaurant = request.user.restaurant
+            product.save()
+            return redirect('core:Menu')
+
+    else:
+        form = ProductForm()
+
+    return render(request, 'core/add_menu.html', {'form': form})
+
+
+def delete_menu_confirmation(request, id):
+    try:
+        product = Product.objects.get(pk=id)
+    except Product.DoesNotExist:
+        return redirect('core:Menu') 
+
+    if request.method == 'POST':
+        
+        product.delete()
+        return redirect('core:Menu')
+
+    return render(request, 'core/delete_menu_confirmation.html', {'product': product})
+
+def owner_home(request):
+    return render(request, 'core/owner_home.html')

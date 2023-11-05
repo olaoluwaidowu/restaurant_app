@@ -1,0 +1,13 @@
+{% extends "authentication/profile_restaurant_owner.html" %}
+
+{% block content %}
+<h2>Confirm Deletion</h2>
+<p>Are you sure you want to delete the product "{{ product.name }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600">Yes, Delete</button>
+</form>
+
+<a href="{% url 'core:Menu' %}" class="text-blue-500 font-semibold mt-2">No, Cancel</a>
+{% endblock content %}

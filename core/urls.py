@@ -8,4 +8,7 @@ urlpatterns = [
     path('menu', Menu, name='Menu'),
     path('update-profile/', update_profile, name='update-profile'),
     path('update-restaurant/', update_restaurant, name='update-restaurant'),
+    path('add-menu/', add_menu, name='add-menu' ),
+    path('delete/<int:id>/', delete_menu_confirmation, name='delete-menu-item'),
+    path('owner/home/', owner_home, name='owner-home' ),
 ]
