@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Owner Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom CSS for the restaurant owner's dashboard */
+        /* Sidebar styling */
+        .sidebar {
+            background: #00A86B; /* Warmer green sidebar background color */
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border: 3px solid white;
+            border-radius: 50%;
+            background-image: url('path_to_your_profile_image.jpg');
+            background-size: cover;
+        }
+
+        .profile-name {
+            margin: 10px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            margin: 20px 0; /* Increased spacing between sidebar options */
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #008957; /* Darker green on hover */
+        }
+
+        /* Content area styling */
+        .content {
+            margin-left: 250px; /* Adjust this value to match the sidebar width */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-info">
+                <div class="profile-image"></div>
+                <div class="profile-name">{{restaurant.restaurant_name}}</div>
+            </div>
+            <a href="{% url "core:Menu" %}" class="hover:bg-green-600 rounded-full p-2">Menu</a>
+            <a href="#orders" class="hover:bg-green-600 rounded-full p-2">Orders</a>
+            <a href="{% url "core:update-profile" %}" class="hover-bg-green-600 rounded-full p-2">Update Profile</a>
+            <a href="{% url "core:update-restaurant" %}" class="hover-bg-green-600 rounded-full p-2">Update Restaurant details</a>
+            <a href="#create-query" class="hover:bg-green-600 rounded-full p-2">Create Query</a>
+            <a href="#predict-market" class="hover:bg-green-600 rounded-full p-2">Predict Market</a>
+            <a href="#market-analysis" class="hover:bg-green-600 rounded-full p-2">Market Analysis</a>
+        </div>
+
+        <!-- Content area -->
+        <div class="content bg-gray-100 p-6">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "authentication/profile_restaurant_owner.html" %}
+
+{% block content %}
+
+<h2 id="menu">Menu Section</h2>
+
+<!-- Add Product Button -->
+<div class="mb-4">
+    <a href="#add-product" class="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Add menu</a>
+</div>
+
+<!-- List of Food Items -->
+<div class="grid grid-cols-2 gap-4">
+    <!-- Replace the following block with a loop to display food items -->
+    <div class="bg-white p-4 rounded shadow">
+        <img src="path_to_food_item_image.jpg" alt="Food Item">
+        <h3 class="text-lg font-semibold mt-2">Food Item Name</h3>
+        <p class="text-gray-600">Description of the food item.</p>
+        <div class="mt-4">
+            <button class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600">Delete</button>
+        </div>
+    </div>
+
+    <!-- Repeat the above block for each food item -->
+</div>
+
+{% endblock content %}

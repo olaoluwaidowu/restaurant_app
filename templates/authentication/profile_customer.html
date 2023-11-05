@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Owner Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom CSS for the restaurant owner's dashboard */
+        /* Sidebar styling */
+        .sidebar {
+            background: #6DBE45; /* Green sidebar background color */
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #5AAB37; /* Darker green on hover */
+        }
+
+        /* Content area styling */
+        .content {
+            margin-left: 250px; /* Adjust this value to match the sidebar width */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="text-2xl mb-4">Restaurant Owner Dashboard</h1>
+        <a href="#menu">Menu</a>
+        <a href="#orders">Orders</a>
+        <a href="#profile">Update Profile</a>
+        <a href="#create-query">Create Query</a>
+        <a href="#predict-market">Predict Market</a>
+        <a href="#market-analysis">Market Analysis</a>
+    </div>
+
+    <div class="content">
+        <!-- Content for each section (menu, orders, profile, etc.) goes here -->
+        <h2 id="menu">Menu Section</h2>
+        <!-- Add content for the Menu section -->
+
+        <h2 id="orders">Orders Section</h2>
+        <!-- Add content for the Orders section -->
+
+        <h2 id="profile">Update Profile Section</h2>
+        <!-- Add content for the Update Profile section -->
+
+        <h2 id="create-query">Create Query Section</h2>
+        <!-- Add content for the Create Query section -->
+
+        <h2 id="predict-market">Predict Market Section</h2>
+        <!-- Add content for the Predict Market section -->
+
+        <h2 id="market-analysis">Market Analysis Section</h2>
+        <!-- Add content for the Market Analysis section -->
+    </div>
+</body>
+</html>

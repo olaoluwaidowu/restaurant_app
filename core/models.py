@@ -1,7 +1,9 @@
 from django.db import models
 from authentication.models import User
+from django.conf import settings
 # Create your models here.
 
+User = settings.AUTH_USER_MODEL
 
 
 class Restaurant(models.Model):
@@ -9,8 +11,7 @@ class Restaurant(models.Model):
     restaurant_address = models.CharField(max_length=100)
     owner = models.OneToOneField(
         User,
-        on_delete=models.CASCADE,
-        limit_choices_to={'user_type': 'RESTAURANT_OWNER'}
+        on_delete=models.CASCADE
     )
 
     def __str__(self):
@@ -27,7 +28,7 @@ class Product(models.Model):
     name = models.CharField(max_length=35)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    #category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/')
 
 

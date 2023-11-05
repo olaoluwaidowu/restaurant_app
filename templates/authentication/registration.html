@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for restaurant-friendly colors and background image */
+        body {
+            background-image: url('https://img.freepik.com/free-photo/vintage-old-rustic-cutlery-dark_1220-4886.jpg'); /* Specify your background image URL here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .form-container {
+            background-color: rgba(240, 245, 247, 0.8); /* Light background color with transparency */
+        }
+
+        .form-title {
+            color: #6DBE45; /* Greenish title color */
+        }
+
+        .form-label {
+            color: #6DBE45; /* Greenish label color */
+        }
+
+        .form-input {
+            border: 1px solid #6DBE45; /* Greenish border color */
+        }
+
+        .form-button {
+            background-color: #6DBE45; /* Greenish button background color */
+        }
+
+        .form-button:hover {
+            background-color: #5AAB37; /* Darker greenish color on hover */
+        }
+    </style>
+    <script>
+        function togglePassword(inputId) {
+            const inputField = document.getElementById(inputId);
+            if (inputField.type === 'password') {
+                inputField.type = 'text';
+            } else {
+                inputField.type = 'password';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded shadow-lg w-96 form-container">
+            <h1 class="text-2xl font-semibold mb-4 text-center form-title">Foodie Rush</h1>
+            <form action="#" method="post" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <label for="user_type" class="block font-semibold text-gray-600 form-label">I am a:</label>
+                    <select name="user_type" id="user_type" class="w-full border p-2 rounded form-input">
+                        <option value="customer">Customer</option>
+                        <option value="restaurant_owner">Restaurant Owner</option>
+                        <option value="delivery_agent">Delivery Agent</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label_tag }}</label>
+                    {{ form.email }}
+                </div>
+                <div>
+                    <label for="{{ form.password.id_for_label }}">{{ form.password.label_tag }}</label>
+                    {{ form.password }}
+                    <input type="checkbox" onclick="togglePassword('id_password')" /> Show
+                </div>
+                <div>
+                    <label for="{{ form.confirm_password.id_for_label }}">{{ form.confirm_password.label_tag }}</label>
+                    {{ form.confirm_password }}
+                    {% if form.errors %}
+                    <p class="text-red-500">Passwords do not match</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded form-button hover:bg-blue-600">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+    </div>
+</body>
+</html>
