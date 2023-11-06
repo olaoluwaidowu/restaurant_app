@@ -139,7 +139,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hawleyclef@gmail.com'
-EMAIL_HOST_PASSWORD = 'qatjihixjcmyowjd'  
+EMAIL_HOST_PASSWORD = 'qatjihixjcmyowjd'  # Revoked
 
 #REQUESTS_CA_BUNDLE = certifi.where()
 
