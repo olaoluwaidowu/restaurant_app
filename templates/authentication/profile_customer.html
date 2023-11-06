@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Owner Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <style>
+        /* Custom CSS for the restaurant owner's dashboard */
+        /* Sidebar styling */
+        .sidebar {
+            background: #6DBE45; /* Green sidebar background color */
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #5AAB37; /* Darker green on hover */
+        }
+
+        /* Content area styling */
+        .content {
+            margin-left: 250px; /* Adjust this value to match the sidebar width */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="text-2xl mb-4">Restaurant Owner Dashboard</h1>
+        <a href="#menu">Menu</a>
+        <a href="#orders">Orders</a>
+        <a href="#profile">Update Profile</a>
+        <a href="#create-query">Create Query</a>
+        <a href="#predict-market">Predict Market</a>
+        <a href="#market-analysis">Market Analysis</a>
+    </div>
+
+    <div class="content">
+    </div>
+</body>
+</html>

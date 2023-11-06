@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import certifi
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'authentication',
+    'core',
+
 ]
 
 MIDDLEWARE = [
@@ -64,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -82,8 +86,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = "authentication.User"
-
+AUTH_USER_MODEL = 'authentication.User'
 
 
 # Password validation
@@ -126,3 +129,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hawleyclef@gmail.com'
+EMAIL_HOST_PASSWORD = 'qatjihixjcmyowjd'  
+
+#REQUESTS_CA_BUNDLE = certifi.where()
+
+#EMAIL_SSL_CA_BUNDLE = REQUESTS_CA_BUNDLE
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
