@@ -6,7 +6,7 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .utils import send_confirmation_email
 from django.conf import settings
 from django.contrib.auth.backends import ModelBackend
@@ -45,7 +45,6 @@ def register(request):
             password = form.cleaned_data.get('password')
             user_type = form.cleaned_data.get('user_type')
 
-            # Determine user creation based on user_type
             if user_type == 'customer':
                 user = User.objects.create_customer(email=email, password=password)
             elif user_type == 'restaurant_owner':
@@ -57,7 +56,7 @@ def register(request):
             user.save()
 
             send_confirmation_email(request, user)
-            # Redirect to a success page or login page
+            
             return redirect('authentication:ConfirmEmail')
 
     else:
@@ -104,7 +103,7 @@ def custom_login(request):
             login(request, user)
             print('user logged in')
 
-            return redirect('core:owner-home')  
+            return redirect('authentication:profile_page')  
         else:
             print('form is invalid')
     else:
@@ -116,7 +115,7 @@ def custom_login(request):
 def profile(request):
     if request.user.is_customer:
 
-        return render(request, 'profile_customer.html', {'user': request.user})
+        return redirect('core:select-restaurant')
     elif request.user.is_rider:
 
         return render(request, 'profile_rider.html', {'user': request.user})
@@ -141,6 +140,10 @@ def confirm_email_view(request):
     return render(request, 'authentication/confirm_email.html')
 
 
-
 class CustomLoginView(LoginView):
     authentication_form = LoginForm
+    
+def logout_user(request):
+    logout(request)
+    
+    return redirect('authentication:Login')

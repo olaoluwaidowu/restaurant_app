@@ -11,4 +11,6 @@ urlpatterns = [
     path('add-menu/', add_menu, name='add-menu' ),
     path('delete/<int:id>/', delete_menu_confirmation, name='delete-menu-item'),
     path('owner/home/', owner_home, name='owner-home' ),
+    path('select-restaurant/', select_restaurant, name='select-restaurant'),
+    path('menu-list/', menu_list, name='menu-list'),
 ]
