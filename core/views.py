@@ -70,7 +70,7 @@ def add_menu(request):
 
     return render(request, 'core/add_menu.html', {'form': form})
 
-
+@login_required(login_url='authentication:Login')
 def delete_menu_confirmation(request, id):
     try:
         product = Product.objects.get(pk=id)
@@ -84,5 +84,24 @@ def delete_menu_confirmation(request, id):
 
     return render(request, 'core/delete_menu_confirmation.html', {'product': product})
 
+@login_required(login_url='authentication:Login')
 def owner_home(request):
     return render(request, 'core/owner_home.html')
+
+
+def select_restaurant(request):
+    restaurants = Restaurant.objects.all()
+    return render(request, 'core/select_restaurant.html', {'restaurants': restaurants})
+
+@login_required(login_url='authentication:Login')
+def menu_list(request):
+    if request.method == 'POST':
+        restaurant_id = request.POST.get('restaurant')
+        
+        restaurant = Restaurant.objects.get(restaurant_name=restaurant_id)
+        #products = restaurant.restaurant_name
+        products = Product.objects.get(restaurant=restaurant)
+        
+        return render(request, 'menu_list.html', {'restaurant': restaurant, 'menu_items': products})
+    else:
+        return redirect('select-restaurant')
