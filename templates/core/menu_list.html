@@ -53,37 +53,12 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded shadow-lg w-96 form-container">
             <h1 class="text-2xl font-semibold mb-4 text-center form-title">Foodie Rush</h1>
-            <form action="#" method="post" class="space-y-4">
-                {% csrf_token %}
-                <div>
-                    <label for="user_type" class="block font-semibold text-gray-600 form-label">I am a:</label>
-                    <select name="user_type" id="user_type" class="w-full border p-2 rounded form-input">
-                        <option value="customer">Customer</option>
-                        <option value="restaurant_owner">Restaurant Owner</option>
-                        <option value="delivery_agent">Delivery Agent</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="{{ form.email.id_for_label }}">{{ form.email.label_tag }}</label>
-                    {{ form.email }}
-                    {% if form.email.errors %}
-                    <p class="text-red-500">{{form.email.errors}}</p>
-                    {% endif %}
-                </div>
-                <div>
-                    <label for="{{ form.password.id_for_label }}">{{ form.password.label_tag }}</label>
-                    {{ form.password }}
-                    <input type="checkbox" onclick="togglePassword('id_password')" /> Show
-                </div>
-                <div>
-                    <label for="{{ form.confirm_password.id_for_label }}">{{ form.confirm_password.label_tag }}</label>
-                    {{ form.confirm_password }}
-                    {% if form.confirm_password.errors %}
-                    <p class="text-red-500">Passwords do not match</p>
-                    {% endif %}
-                </div>
-                <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded form-button hover:bg-blue-600">Register</button>
-            </form>
+            <h1>Menu for {{ restaurant.restaurant_name }}</h1>
+            <ul>
+                {% for item in menu_items %}
+                    <li>{{ item.name }} - ${{ item.price }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </body>
@@ -92,3 +67,21 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

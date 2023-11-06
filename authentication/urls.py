@@ -12,4 +12,5 @@ urlpatterns = [
     path('profile/', profile, name='profile_page'),
     path('confirm/', confirm_email_view, name='ConfirmEmail'),
     path('login/', custom_login, name='Login'),
+    path('logout', logout_user, name='Logout')
 ]
